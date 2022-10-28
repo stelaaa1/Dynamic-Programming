@@ -1,0 +1,26 @@
+public class Solution {
+
+	public static int countMinStepsToOne(int n) {
+        int[] storage = new int[n+1];
+        storage[1] = 0;
+        
+        
+        for(int i=2; i<=n; i++){
+            
+        int x = Integer.MAX_VALUE;
+        int y = Integer.MAX_VALUE;
+        int z = Integer.MAX_VALUE;
+            
+            x = storage[i-1];
+            
+            if(i % 2 == 0)
+            	y = storage[i/2];
+            
+            if(i % 3 == 0)
+                z = storage[i/3];
+            
+            storage[i] = 1 + Math.min(Math.min(x, y), z); 
+        }
+        
+        return storage[n];
+    }
